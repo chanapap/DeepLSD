@@ -1,5 +1,15 @@
 
 # Build -----------------------------------------------------------------------
+output/
+aligned-output/
+demo-downsam/
+masks/
+roof-downsam/
+room-downsam/
+moge-out-demo-downsam/
+moge-out-roof-downsam/
+moge-out-room-downsam/
+*.tar
 
 ### Output and Cache Directories ###
 /External/

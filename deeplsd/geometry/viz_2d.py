@@ -20,7 +20,7 @@ def cm_RdGn(x):
     return np.clip(c, 0, 1)
 
 
-def plot_images(imgs, titles=None, cmaps='gray', dpi=100, size=6, pad=.5):
+def plot_images(imgs, titles=None, cmaps='gray', dpi=300, size=8, pad=.5):
     """Plot a set of images horizontally.
     Args:
         imgs: a list of NumPy or PyTorch images, RGB (H, W, 3) or mono (H, W).
@@ -47,7 +47,7 @@ def plot_images(imgs, titles=None, cmaps='gray', dpi=100, size=6, pad=.5):
         
         
 def plot_lines(lines, line_colors='orange', point_color='cyan',
-               ps=4, lw=2, indices=(0, 1), alpha=1):
+               ps=2, lw=1, indices=(0, 1), alpha=1):
     """ Plot lines and endpoints for existing images.
     Args:
         lines: list of ndarrays of size (N, 2, 2).
@@ -74,6 +74,8 @@ def plot_lines(lines, line_colors='orange', point_color='cyan',
     # Plot the lines and junctions
     for a, l, lc in zip(axes, lines, line_colors):
         for i in range(len(l)):
+            # x1, x2 = (l[i, 0, 0], l[i, 1, 0])
+            # y1, y2 = (l[i, 0, 1], l[i, 1, 1])
             line = matplotlib.lines.Line2D(
                 (l[i, 0, 0], l[i, 1, 0]), (l[i, 0, 1], l[i, 1, 1]),
                 zorder=1, c=lc[i], linewidth=lw, alpha=alpha)
@@ -81,6 +83,8 @@ def plot_lines(lines, line_colors='orange', point_color='cyan',
         pts = l.reshape(-1, 2)
         a.scatter(pts[:, 0], pts[:, 1], c=point_color, s=ps,
                   linewidths=0, zorder=2, alpha=alpha)
+        
+    plt.show()
 
         
 def plot_vp(lines, vp_labels, lw=2, indices=(0, 1)):
